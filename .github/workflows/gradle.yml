@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Gradle Wrapper
-      run: ./gradlew build
+      run: chmod +x ./gradlew &&  ./gradlew build
     - name: Docker login to DockerHub  with token 
       run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
