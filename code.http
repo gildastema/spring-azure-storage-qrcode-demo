@@ -1,0 +1,15 @@
+
+### Send POST request with json body
+POST https://spring-azure-demo-qr.bluemeadow-1ca74a3f.australiaeast.azurecontainerapps.io/api/codes
+Content-Type: application/json
+
+{
+
+  "content": "John, Doe"
+}
+
+### Get List of codes
+GET https://spring-azure-demo-qr.bluemeadow-1ca74a3f.australiaeast.azurecontainerapps.io/api/codes
+
+### Get code by id
+GET https://spring-azure-demo-qr.bluemeadow-1ca74a3f.australiaeast.azurecontainerapps.io/api/codes/1

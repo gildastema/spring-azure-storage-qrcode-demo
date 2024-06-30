@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+
+  cloud:
+    azure:
+      storage:
+        account-name: ${AZURE_STORAGE_ACCOUNT_NAME}
+        connection-string: ${AZURE_STORAGE_CONNECTION_STRING}
+        account-key: ${AZURE_STORAGE_ACCOUNT_KEY}
