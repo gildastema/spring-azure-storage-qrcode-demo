@@ -30,3 +30,26 @@ jobs:
 
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-azure-storage-appcontainer-demo
+  
+  deploy_to_azure: ## deploy appcontainer to azure 
+    runs-on: ubuntu-latest    
+    steps:
+      - name: Login to azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Deploy to Azure Container Instances
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}
+          name: ${{ secrets.AZURE_CONTAINER_NAME }}
+          image: ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-azure-storage-appcontainer-demo
+          ports: 8080
+          cpu: 1
+          memory: 1.5
+          restart-policy: Always
+          environment-variables: 'DATABASE_URL=${{ secrets.DATABASE_URL }};AZURE_STORAGE_ACCOUNT_NAME=${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }};AZURE_STORAGE_CONNECTION_STRING=${{ secrets.AZURE_STORAGE_CONNECTION_STRING }};AZURE_STORAGE_ACCOUNT_KEY=${{ secrets.AZURE_STORAGE_ACCOUNT_KEY }}'
+
+
+    
+    
