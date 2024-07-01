@@ -54,7 +54,7 @@ jobs:
             az account show
 
       - name: Deploy to Azure Container Instances
-        run: az containerapp update --name ${{secrets.AZURE_CONTAINER_NAME}}  --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --image ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-azure-storage-appcontainer-demo:latest
+        run: az containerapp update --name ${{secrets.AZURE_CONTAINER_NAME}}  --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} --image ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-azure-storage-appcontainer-demo:${{ env.IMAGE_TAG }}
        
     
     
