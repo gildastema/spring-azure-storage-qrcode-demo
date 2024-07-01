@@ -36,6 +36,7 @@ jobs:
       run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/spring-boot-azure-storage-appcontainer-demo:latest
   
   deploy_to_azure: ## deploy appcontainer to azure 
+    needs: build_docker_image    
     permissions:
       contents: read
       id-token: write      
